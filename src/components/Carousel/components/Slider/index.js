@@ -35,6 +35,15 @@ export const SliderItem = styled.li`
     height: 197px;
     object-fit: cover;
   }
+
+  &:hover{
+    z-index: 400;
+    transform: translate3d(0px, 0px, 0px);
+    width: 500px;
+    height: 500px;
+    transition-duration: 500ms;
+    transition-delay: 0ms;
+  }
 `;
 
 
@@ -42,8 +51,8 @@ const Slider = ({ children }) => (
   <Container>
     <SlickSlider {...{
       dots: false,
-      infinite: false,
-      speed: 300,
+      infinite: true,
+      speed: 500,
       centerMode: false,
       variableWidth: true,
       adaptiveHeight: true,

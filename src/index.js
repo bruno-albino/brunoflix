@@ -4,10 +4,11 @@ import './index.css';
 import Home from './pages/Home';
 import CadastroVideo from './pages/cadastro/Video';
 import CadastroCategoria from './pages/cadastro/Categoria';
+import Page404 from './pages/404'
 
 import { BrowserRouter, Switch, Route  } from 'react-router-dom'
 
-const Page404 = () => <div>Página 404</div>
+
 
 ReactDOM.render(
   <BrowserRouter>

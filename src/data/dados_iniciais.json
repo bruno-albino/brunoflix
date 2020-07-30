@@ -1,45 +1,45 @@
 {
   "categorias": [
     {
-      "titulo": "Front End",
-      "link": "https://www.alura.com.br/formacao-front-end",
-      "cor": "#6BD1FF",
+      "titulo": "TrailerOffice",
+      "link": "https://www.youtube.com/watch?v=kuO0RqtsdqE&list=PLB_vaUBxT31X1G4I4_mPab5X4_hjNl6Rl&index=1",
+      "cor": "#6BD1FF", 
       "link_extra": {
         "text": "Formação de Front End na Alura",
         "url": "https://www.alura.com.br/cursos-online-front-end"
       },
       "videos": [
         {
-          "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
-          "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw"
+          "titulo": "Só 5 minutinhos de POWER",
+          "url": "https://www.youtube.com/watch?v=_uCTkGXnm3g"
         },
         {
-          "titulo": "SEO com React",
-          "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+          "titulo": "The Boys S2 é de explodir cabeças!",
+          "url": "https://www.youtube.com/watch?v=kuO0RqtsdqE"
         },
         {
-          "titulo": "Componentização com VanillaJS #AluraMais",
-          "url": "https://www.youtube.com/watch?v=LatCKpcOMak"
+          "titulo": "Explicando o universo de Fundação",
+          "url": "https://www.youtube.com/watch?v=ypYTyn4A8WE"
         },
         {
-          "titulo": "Pare de chutar e aprenda a display: inline #01",
-          "url": "https://www.youtube.com/watch?v=5PS6ku8NzIE"
+          "titulo": "Descobrindo o trailer de You Should Have Left",
+          "url": "https://www.youtube.com/watch?v=vaYT1uhA_iY"
         },
         {
-          "titulo": "Template String: Interpolando strings com JavaScript #AluraMais",
-          "url": "https://www.youtube.com/watch?v=ORI_HTXaIw0"
+          "titulo": "Star Wars: Squadrons - TRAILER REACT",
+          "url": "https://www.youtube.com/watch?v=mUklaO87iy4"
         },
         {
-          "titulo": "Qual é a melhor linguagem de programação? #HipstersPontoTube",
-          "url": "https://www.youtube.com/watch?v=Uh-GNH-t89w"
+          "titulo": "Trailer de Bloodshot. Sangue no olho! | TrailerOffice",
+          "url": "https://www.youtube.com/watch?v=XO-xcAyI7Z8"
         },
         {
-          "titulo": "Novidades do Angular v9",
-          "url": "https://www.youtube.com/watch?v=34uHo7hFmG0"
+          "titulo": "Trailer de Morbius | TrailerOffice",
+          "url": "https://www.youtube.com/watch?v=5OlJZpAR2TU"
         },
         {
-          "titulo": "Base para aprender os frameworks",
-          "url": "https://www.youtube.com/watch?v=QzDjdlF1BQI"
+          "titulo": "Trailer de Viúva Negra | TrailerOffice",
+          "url": "https://www.youtube.com/watch?v=N8anx6C_9RU"
         }        
       ]
     },

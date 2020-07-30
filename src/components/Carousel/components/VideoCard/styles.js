@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const VideoCardContainer = styled.a`
-  border: 2px solid;
-  border-radius: 4px;
+  border-radius: 0px 4px 4px 0px;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
@@ -17,15 +16,36 @@ export const VideoCardContainer = styled.a`
   position: relative;
   display: flex;
   align-items: flex-end;
-  padding: 16px;
 
   transition: opacity .3s;
   &:hover,
   &:focus {
-    opacity: .5;
+    opacity: .7;
   }
   
   &:not(:first-child) {
     margin-left: 20px;
+  }
+`;
+
+export const VideoDetailsBorder = styled.div`
+  height: 50px;
+  width: 100%;
+  opacity: 0;
+  padding: 5px;
+  padding-bottom: 55px;
+
+  &:hover{
+    opacity: 1;
+  }
+`;
+
+
+VideoDetailsBorder.Title = styled.a`
+  color: white;
+  font-weight: bold;
+
+  &:hover{
+    background-color: var(--primary);
   }
 `;
