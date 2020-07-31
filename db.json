@@ -1,0 +1,24 @@
+{
+    "categories": [
+        {
+            "name": "Front end",
+            "description": "Uma categoria bacanudassa",
+            "cor": "#cbd11f"
+        },
+        {
+            "name": "webdfb",
+            "description": "Uma categoria bacanudassa",
+            "cor": "#cbd11f"
+        },
+        {
+            "name": "vsfvd",
+            "description": "Uma categoria bacanudassa",
+            "cor": "#cbd11f"
+        },
+        {
+            "name": "asd",
+            "description": "Uma categoria bacanudassa",
+            "cor": "#cbd11f"
+        }
+    ]
+}
