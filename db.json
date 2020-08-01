@@ -5,6 +5,12 @@
       "title": "TrailerOffice",
       "description": "Trailers reacts",
       "color": "#cbd11f"
+    },
+    {
+      "title": "Titulo da categoria",
+      "description": "descrição dela",
+      "color": "",
+      "id": 2
     }
   ],
   "videos": [
@@ -67,6 +73,12 @@
       "url": "https://www.youtube.com/watch?v=hhQ3RtvmfEg",
       "categoryId": 1,
       "id": 10
+    },
+    {
+      "title": "",
+      "url": "",
+      "categoryId": 2,
+      "id": 11
     }
   ]
 }

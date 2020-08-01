@@ -15,7 +15,40 @@ const getAllWithVideos = () => {
     })
 }
 
+const getAll = () => {
+    return fetch(URL_CATEGORIES)
+    .then(async response => {
+        if(response.ok) {
+            const res = await response.json()
+            return res
+        }
+
+        throw new Error('Não foi possível buscar os dados')
+    })
+}
+
+const create = category => {
+    return fetch(URL_CATEGORIES, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(category)
+    })
+    .then(async response => {
+
+        if(response.ok) {
+            const res = await response.json()
+            return res
+        }
+
+        throw new Error('Não foi possível cadastrar a categoria')
+    })
+}
+
 
 export default {
-    getAllWithVideos
+    getAllWithVideos,
+    getAll,
+    create
 }

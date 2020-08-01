@@ -1,73 +1,89 @@
-import React, { useState, useEffect } from 'react'
-import PageDefault from '../../../components/PageDefault'
-import { Link, useHistory } from 'react-router-dom'
-import FormField from '../../../components/FormField'
-import Button from '../../../components/Button'
-import useForm from '../../../hooks/useForm'
-import videosRepository from '../../../repositories/videos'
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import PageDefault from '../../../components/PageDefault';
+import useForm from '../../../hooks/useForm';
+import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
+import videosRepository from '../../../repositories/videos';
+import categoriesRepository from '../../../repositories/categories';
 
-const CadastroCategoria = () => {
-    const history = useHistory()
-    const initialValues = {
-        title: 'Titulo da categoria',
-        url: 'https://www.youtube.com/watch?v=hhQ3RtvmfEg',
-        categoryId: 1
-    }
+function CadastroVideo() {
+    const [categories, setCategories] = useState([]);
 
-    const { values, handleChange } = useForm(initialValues)
+    const history = useHistory();
+    const categoryTitles = categories.map(({ title }) => title)
 
-    const handleSubmit = e => {
-        e.preventDefault()
+    const { values, handleChange } = useForm({
+        title: '',
+        url: '',
+        category: '',
+    });
 
-        videosRepository.create({
-            title: values.title,
-            url: values.url,
-            categoryId: values.categoryId
-        })
-        .then(() => history.push('/'))
-        .catch(err => console.log(err))
-    }
+    useEffect(() => {
+        categoriesRepository
+            .getAll()
+            .then(response => {
+                setCategories(response);
+            })
+    }, []);
 
     return (
         <PageDefault>
             <h1>Cadastro de Video</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={event => {
+                event.preventDefault();
+
+                const choosenCategory = categories.find(categorie => {
+                    return categorie.title === values.category;
+                });
+
+                videosRepository.create({
+                    title: values.title,
+                    url: values.url,
+                    categoryId: choosenCategory.id,
+                })
+                .then(() => {
+                    console.log('Cadastrou com sucesso!');
+                    history.push('/');
+                });
+            }}
+            >
                 <FormField
-                    label='Título do Video'
-                    name='title'
+                    label="Título do Vídeo"
+                    name="title"
                     value={values.title}
                     onChange={handleChange}
-                    type='text'
                 />
 
                 <FormField
-                    label='URL do Video'
-                    name='url'
+                    label="URL"
+                    name="url"
                     value={values.url}
                     onChange={handleChange}
-                    type='text'
                 />
 
                 <FormField
-                    label='Categoria'
-                    name='categoryId'
-                    value={values.categoryId}
+                    label="Categoria"
+                    name="category"
+                    value={values.category}
                     onChange={handleChange}
-                    type='text'
+                    suggestions={categoryTitles}
                 />
-                <Button type='submit'>Cadastrar</Button>
+
+                <Button type="submit">
+                    Cadastrar
+                </Button>
             </form>
-            <br/>
-            <Link to='/cadastro/categoria'>
-                Ir para categorias
-            </Link>
-            <br/>
-            <Link to='/'>
-                Ir para home
+
+            <br />
+            <br />
+
+            <Link to="/cadastro/categoria">
+                Cadastrar Categoria
             </Link>
         </PageDefault>
-    )
+    );
 }
 
-export default CadastroCategoria
+export default CadastroVideo;

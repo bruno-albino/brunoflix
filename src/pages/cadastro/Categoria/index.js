@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PageDefault from '../../../components/PageDefault'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import FormField from '../../../components/FormField'
 import Button from '../../../components/Button'
 import useForm from '../../../hooks/useForm'
@@ -9,6 +9,7 @@ import categoriesRepositoy from'../../../repositories/categories'
 const CadastroCategoria = () => {
     const [categories, setCategories] = useState([])
     
+    const history = useHistory()
     const initialValues = {
         title: '',
         description: '',
@@ -26,6 +27,16 @@ const CadastroCategoria = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
+
+        categoriesRepositoy.create({
+            title: values.title,
+            description: values.description,
+            color: values.color
+        })
+        .then(() => {
+            console.log('Cadastrou com sucesso!');
+            history.push('/');
+        });
     }
 
     return (
