@@ -3,43 +3,29 @@ import PageDefault from '../../../components/PageDefault'
 import { Link } from 'react-router-dom'
 import FormField from '../../../components/FormField'
 import Button from '../../../components/Button'
+import useForm from '../../../hooks/useForm'
+import categoriesRepositoy from'../../../repositories/categories'
 
 const CadastroCategoria = () => {
+    const [categories, setCategories] = useState([])
+    
     const initialValues = {
-        name: '',
+        title: '',
         description: '',
         color: ''
     }
 
-    const URL = window.location.hostname.includes('localhost')
-    ? 'http://localhost:8080/categories'
-    : 'https://nerd-flix.herokuapp.com/categories'
-
-    const [category, setCategory] = useState(initialValues)
-    const [categories, setCategories] = useState([])
+    const { values, handleChange } = useForm(initialValues)
 
     useEffect(() => {
-        fetch(URL)
-        .then(response => response.json())
-        .then(response => {
-            setCategories([ ...response ])
-        })
-    }, [URL])
+        categoriesRepositoy.getAllWithVideos()
+        .then(response => setCategories(response))
+    }, [])
 
-    const handleChange = e => {
-        setValue(e.target.getAttribute('name'), e.target.value)
-    }
 
-    const setValue = (name, value) => {
-        setCategory({
-            ...category,
-            [name]: value
-        })
-    }
 
     const handleSubmit = e => {
         e.preventDefault()
-        alert('foi')
     }
 
     return (
@@ -48,23 +34,23 @@ const CadastroCategoria = () => {
 
             <form onSubmit={handleSubmit}>
                 <FormField
-                    label='Nome da Categoria'
-                    name='name'
-                    value={category.name}
+                    label='Título da Categoria'
+                    name='title'
+                    value={values.title}
                     onChange={handleChange}
                     type='text'
                 />
                 <FormField
                     label='Descrição'
                     name='description'
-                    value={category.description}
+                    value={values.description}
                     onChange={handleChange}
                     type='textarea'
                 />
                 <FormField
                     label='Cor'
                     name='color'
-                    value={category.color}
+                    value={values.color}
                     onChange={handleChange}
                     type='color'
                 />
@@ -79,7 +65,7 @@ const CadastroCategoria = () => {
             <ul>
                 {categories.map(categorie => {
                     return (
-                        <li key={categorie.name}>{categorie.name}</li>
+                        <li key={categorie.title}>{categorie.title}</li>
                     )
                 })}
             </ul>

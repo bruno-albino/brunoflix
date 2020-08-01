@@ -1,35 +1,50 @@
-import React from 'react';
-import dadosIniciais from '../../data/dados_iniciais.json'
+import React, { useEffect, useState } from 'react';
 import BannerMain from '../../components/BannerMain'
 import Carousel from '../../components/Carousel'
 import PageDefault from '../../components/PageDefault';
+import categoriesRepository from '../../repositories/categories'
+
 
 function Home() {
+  const [initialsDatas, setInitialsDatas] = useState([])
+
+  useEffect(() => {
+    categoriesRepository.getAllWithVideos()
+      .then(response => setInitialsDatas(response))
+      .catch(err => {
+        console.log(err.message)
+      })
+  }, [])
+
   return (
-    <div style={{ backgroundColor: '#141414' }}>
-      <PageDefault>
-        <BannerMain 
-          videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-          url={dadosIniciais.categorias[0].videos[0].url}
-          videoDescription={"O que é Front-end ? Trabalhando na área"}
-        />
+    <PageDefault>
+      {initialsDatas.length === 0 && <div>Loading...</div>}
 
-        <Carousel
-          ignoreFirstVideo
-          category={dadosIniciais.categorias[0]}
-        />
+      {initialsDatas.map((categorie, indice) => {
+        if (indice === 0) {
+          return (
+            <div key={categorie.id}>
+              <BannerMain
+                videoTitle={categorie.videos[0].title || 'Sem titulo'}
+                url={categorie.videos[0].url || 'site.com.br'}
+                // videoDescription="O que é Front-end ? Trabalhando na área"
+              />
 
-        <Carousel category={dadosIniciais.categorias[1]} />
+              <Carousel
+                ignoreFirstVideo
+                category={categorie}
+              />
 
-        <Carousel category={dadosIniciais.categorias[2]} />
+            </div>
 
-        <Carousel category={dadosIniciais.categorias[3]} />
+          )
+        }
 
-        <Carousel category={dadosIniciais.categorias[4]} />
-
-        <Carousel category={dadosIniciais.categorias[5]} />
-      </PageDefault>
-    </div>
+        return (
+          <Carousel category={categorie} />
+        )
+      })}
+    </PageDefault>
   );
 }
 
