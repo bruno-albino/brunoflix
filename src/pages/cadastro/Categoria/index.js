@@ -11,7 +11,9 @@ const CadastroCategoria = () => {
         color: ''
     }
 
-    const URL = 'http://localhost:8080/categories'
+    const URL = window.location.hostname.includes('localhost')
+    ? 'http://localhost:8080/categories'
+    : 'https://nerd-flix.herokuapp.com/categories'
 
     const [category, setCategory] = useState(initialValues)
     const [categories, setCategories] = useState([])
@@ -22,7 +24,7 @@ const CadastroCategoria = () => {
         .then(response => {
             setCategories([ ...response ])
         })
-    }, [])
+    }, [URL])
 
     const handleChange = e => {
         setValue(e.target.getAttribute('name'), e.target.value)
